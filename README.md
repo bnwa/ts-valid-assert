@@ -1,4 +1,4 @@
-# ts-ap-val
+# ts-valid-assert
 
 Dead simple applicative validation tools with a few simplifications
 making for more idiomatic TypeScript/JavaScript usage.
