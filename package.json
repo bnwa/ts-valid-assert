@@ -1,18 +1,22 @@
 {
-  "name": "valid",
+  "name": "ts-valid-assert",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "Benoit Barberousse",
+    "email": "74591246+bnwa@users.noreply.github.com"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/bun": "^1.1.8",
     "typescript": "^5.5.4"
   },
-  "devDependencies": {
-    "@types/bun": "^1.1.8"
-  }
+  "description": "TypeScript validation tools for applicative validation",
+  "keywords": [
+    "validation",
+    "applicative validation",
+    "assert",
+    "function validation",
+    "fp"
+  ],
+  "license": "ISC"
 }
