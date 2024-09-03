@@ -1,6 +1,6 @@
-type Valid<T> = readonly [ undefined, T ]
-type Invalid = readonly [ readonly string[] ]
-type Assert<T> = Valid<T> | Invalid
+export type Valid<T> = readonly [ undefined, T ]
+export type Invalid = readonly [ readonly string[] ]
+export type Assert<T> = Valid<T> | Invalid
 
 type Validate<T extends unknown[]> =
   {[K in keyof T]: Assert<T[K]>}
