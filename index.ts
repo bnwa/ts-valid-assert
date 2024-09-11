@@ -53,7 +53,7 @@ export const lift: <T extends unknown[], R>(f: (...xs: [...T]) => R, ...args: Va
     else return res
 }
 
-export const assert: <T>(x: Assert<T>, f?: (errs: readonly string[]) => never) => T =
+export const assert: <T>(x: Assert<T>, f?: (errs: readonly string[]) => Error | string) => T =
   (x, f) => {
     if (isValid(x)) return x[1]
     else if (f instanceof Function) throw f(x[0])
