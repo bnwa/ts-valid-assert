@@ -1,12 +1,14 @@
 import { expect } from 'bun:test'
 import { test } from 'bun:test'
 
+import type { Assert } from '.'
 import { isValid } from '.'
 import { invalid } from '.'
 import { assert } from '.'
 import { lift } from '.'
 import { valid } from '.'
 import { fold } from '.'
+import { fmap } from '.'
 import { map } from '.'
 
 test('map', () => {
@@ -20,6 +22,16 @@ test('map', () => {
   const res = map(err, f)
   expect(isValid(res)).toBeFalse()
   expect(() => assert(res)).toThrowError("Invalid value")
+})
+
+test('fmap', () => {
+  const v = ["a", "b"]
+  const f = (xs: unknown) : Assert<Array<string>> => Array.isArray(xs) ?
+    valid(xs) :
+    invalid("Not a string[]")
+  const x = fmap(f(v), xs => valid(xs.join()))
+  expect(isValid(x)).toBeTrue()
+  expect(assert(x)).toBeString()
 })
 
 test('fold', () => {

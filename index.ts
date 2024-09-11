@@ -22,6 +22,12 @@ export const map: <A,B>(a: Assert<A>, f: (a: A) => B) => Assert<B> =
     valid(f(a[1])) :
     a
 
+export const fmap: <A,B>(a: Assert<A>, f: (a: A) => Assert<B>) => Assert<B> =
+  (a, f) => {
+    if (!isValid(a)) return a
+    else return f(a[1])
+}
+
 export const fold: <A,B>(xs: Assert<A>[], acc: Assert<B>, f: (acc: B, x: A) => B) => Assert<B>=
   ([ head, ...rest], acc, f) =>
     head ?
