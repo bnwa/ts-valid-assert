@@ -59,3 +59,14 @@ export const assert: <T>(x: Assert<T>, f?: (errs: readonly string[]) => Error | 
     else if (f instanceof Function) throw f(x[0])
     else throw new Error(x[0].join('\n'))
   }
+
+export const errGet: (x: Invalid) => readonly string[] =
+  x => x[0]
+
+export const errAppend: (x: Invalid, ...errs: string[]) => Invalid =
+  (x, ...errs) => invalid(...errGet(x), ...errs)
+
+export const errJoin: (x: Invalid, sep?: string) => Invalid =
+  (x, sep) => typeof sep === 'string' ?
+    invalid(errGet(x).join(sep)) :
+    invalid(errGet(x).join())
